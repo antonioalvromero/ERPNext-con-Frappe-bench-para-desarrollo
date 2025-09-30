@@ -9,12 +9,13 @@ La guía está basada en la experiencia práctica de despliegue y configuración
 
 ## 📋 Prerrequisitos
 
-1. **Configurar Docker Desktop**
+1. **Instalar Ubuntu**
+   - Descargar desde Microsoft Store: **Ubuntu 24.04.1 LTS**
+
+2. **Configurar Docker Desktop**
    - Ir a: `Docker > Configuración > Resources > WSL integration`
    - Activar ambas opciones.
 
-2. **Instalar Ubuntu**
-   - Descargar desde Microsoft Store: **Ubuntu 24.04.1 LTS**
 
 ---
 

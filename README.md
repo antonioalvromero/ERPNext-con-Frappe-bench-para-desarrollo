@@ -26,37 +26,53 @@ cd frappe_docker/devcontainer-example
 
 docker compose up -d
 docker exec -it devcontainer-example-frappe-1 bash
-Dentro del contenedor:
+```
 
-bash
+Dentro del contenedor:
+```bash
 apt update
 apt install redis-server -y
-🏗️ Configuración de Frappe Bench
-bash
+```
+---
+## 🏗️ Configuración de Frappe Bench
+
+```bash
 bench init frappe-bench --frappe-branch version-15
 cd frappe-bench
+
+```
+
 Editar el archivo sites/common_site_config.json y agregar:
 
-json
+```bash
 {
-  "db_host": "mariadb",
+  "db_host": "[IP DEL SERVIDOR MARIADB]",
   "db_port": 3306,
-  "db_name": "yoursite_local",
+  "db_name": "rrtechnology.local",
   "db_password": "123",
   "db_type": "mariadb",
   "db_user": "root"
 }
+
+
+```
 Crear un nuevo sitio:
-
-bash
+```bash
 bench new-site rrtechnology.local
-En caso de necesitar eliminarlo:
 
-bash
+```
+En caso de necesitar eliminarlo:
+```bash
 bench drop-site rrtechnology.local --force
-📦 Instalación de aplicaciones
-ERPNext y módulos principales
-bash
+
+
+```
+---
+
+# 📦 Instalación de aplicaciones
+##ERPNext y módulos principales
+
+```bash
 bench get-app erpnext --branch version-15
 bench --site rrtechnology.local install-app erpnext
 
@@ -65,6 +81,8 @@ bench --site rrtechnology.local install-app payments
 
 bench get-app webshop --branch version-15
 bench --site rrtechnology.local install-app webshop
+
+```
 Esto habilita:
 
 Página de productos
@@ -79,56 +97,66 @@ Navegación por categorías
 
 📖 Documentación oficial de e-commerce
 
-Otros módulos útiles
-Helpdesk
-
-bash
+---
+## Otros módulos útiles
+### Helpdesk
+```bash
 bench get-app helpdesk --branch main
 bench --site rrtechnology.local install-app helpdesk
+
+
+```
 Gestión de tickets, SLA, asignaciones y respuestas automáticas
 
 Integración con correo electrónico y CRM
 
-Chat
-
-bash
+### Chat
+```bash
 bench get-app chat --branch main
 bench --site rrtechnology.local install-app chat
+
+```
 Mensajería interna en tiempo real
 
 Chats entre usuarios y grupos
 
 Integración con menciones y comentarios
 
-▶️ Ejecución
-Desde /frappe-bench:
+---
 
-bash
+# ▶️ Ejecución
+Desde /frappe-bench:
+```bash
 bench use rrtechnology.local
 bench start
-🛒 Configuración del Webshop
-Ir a Website Settings, configurar y guardar.
 
-Crear productos en Item List:
+```
+---
 
-Seleccionar Stock Information All Warehouses
+# 🛒 Configuración del Webshop
 
-Publicar desde el Action del producto
+1. Ir a Website Settings, configurar y guardar.
 
-Añadir stock:
+2.Crear productos en Item List:
 
-Stock > Stock Entry > Add Stock Entry
+-Seleccionar Stock Information All Warehouses
 
-Crear proveedor:
+-Publicar desde el Action del producto
+
+3.Añadir stock:
+
+-Stock > Stock Entry > Add Stock Entry
+
+4.Crear proveedor:
 
 Buying > Supplier
 
-Crear orden de compra:
+5.Crear orden de compra:
 
 Buying > Purchase Order → Submit
 
-Registrar recepción:
+6.Registrar recepción:
 
 Purchase Receipt → Submit
 
-Verificar en Stock Balance
+7.Verificar en Stock Balance
